@@ -12,8 +12,34 @@ typedef struct {
 } window_t;
 
 typedef struct {
+  unsigned long old_time;
+  unsigned long new_time;
+} framerate_t;
+
+typedef struct {
+  bool w, a, s, d;
+  bool space;
+  int mouse_x, new_mouse_x;
+} input_t;
+
+typedef struct {
+  double posx, posy;
+} camera_t;
+
+typedef struct {
+  double posx, posy;
+  double dirx, diry;
+  double move_speed;
+  double sensitivity;
+  input_t input;
+  camera_t camera;
+} player_t;
+
+typedef struct {
   window_t window;
   SDL_Event event;
+  player_t player;
+  framerate_t framerate;
   bool quit;
 } game_t;
 
